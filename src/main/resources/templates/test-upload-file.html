@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<body>
+<h2>Upload Ảnh và Video</h2>
+
+<form th:action="@{/api/upload}" method="post" enctype="multipart/form-data">
+  <input type="file" name="files" accept="image/*, video/*, audio/*" multiple>
+  <br><br>
+  <input type="submit" value="Upload">
+</form>
+
+<h2>Ảnh và Video Đã Chọn:</h2>
+<div id="mediaPreview"></div>
+
+<script>
+  function previewMedia() {
+    var preview = document.querySelector("#mediaPreview");
+    var files = document.querySelector("input[type=file]").files;
+
+    function readAndPreview(file) {
+      var reader = new FileReader();
+
+      reader.addEventListener("load", function () {
+        var media;
+        if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
+          media = new Image();
+          media.title = file.name;
+        } else if (/\.(mp4|mov|avi)$/i.test(file.name)) {
+          media = document.createElement("video");
+          media.title = file.name;
+          media.controls = true;
+        } else {
+          return; // Skip unsupported file types
+        }
+
+        media.height = 100; // Set the displayed media height
+        media.src = this.result;
+        preview.appendChild(media);
+      });
+
+      reader.readAsDataURL(file);
+    }
+
+    if (files) {
+      [].forEach.call(files, readAndPreview);
+    }
+  }
+
+  // Call previewMedia function when there is a change in the file input
+  document.querySelector("input[type=file]").addEventListener("change", previewMedia);
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HMit Friends </title>
+
+    <link rel="stylesheet" th:href="@{css/themify-icons.css}">
+    <link rel="stylesheet" th:href="@{css/feather.css}">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{images/favicon.png}">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" th:href="@{css/style.css}">
+
+</head>
+
+<body class="color-theme-blue mont-font">
+
+<div class="preloader"></div>
+
+
+<div class="main-wrapper">
+
+    <!-- navigation top-->
+    <div th:insert="~{fragments/header-fragment::frag-header}" class="nav-header bg-white shadow-xs border-0">
+    </div>
+    <!-- navigation top -->
+
+    <!-- navigation left -->
+    <nav th:insert="~{fragments/nav-fragment::frag-navbar}" class="navigation scroll-bar">
+    </nav>
+    <!-- navigation left -->
+
+    <!-- main content -->
+    <div class="main-content right-chat-active">
+
+        <div class="middle-sidebar-bottom">
+            <div class="middle-sidebar-left pe-0">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card shadow-xss w-100 d-block d-flex border-0 p-4 mb-3">
+                            <div class="card-body d-flex align-items-center p-0">
+                                <h2 class="fw-700 mb-0 mt-0 font-md text-grey-900">Friends</h2>
+                                <div class="search-form-2 ms-auto">
+                                    <i class="ti-search font-xss"></i>
+                                    <input type="text"
+                                           class="form-control text-grey-500 mb-0 bg-greylight theme-dark-bg border-0"
+                                           placeholder="Search here.">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row ps-2 pe-2">
+                            <div class="col-md-6 col-sm-6 pe-2 ps-2" th:each="user: ${friends}">
+                                <div class="card d-block border-0 shadow-xss rounded-3 overflow-hidden mb-3">
+                                    <div class="card-body w-100 row">
+                                        <div class="col-md-2 col-sm-2">
+                                            <figure class="avatar position-relative w65 "><img th:src="${user.avatar}"
+                                                                                               alt="image"
+                                                                                               class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
+                                            </figure>
+                                        </div>
+                                        <div class="col-md-8 col-sm-8 mt-2">
+                                            <h4 class="fw-700 font-xsss" th:text="${user.fullName}"></h4>
+                                            <p class="fw-500 font-xsssss text-grey-500 mt-0 mb-3"
+                                               th:text="${user.email}"></p>
+                                        </div>
+                                        <div class="col-md-2 col-sm-2">
+                                            <a th:href="'/profile?id=' + ${user.userId}"
+                                               class="d-none d-lg-block btn-round-lg ms-2 rounded-3 text-grey-700 bg-greylight">
+                                                <i class="feather-eye font-md"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- main content -->
+
+    <script th:src="@{js/plugin.js}"></script>
+    <script th:src="@{js/scripts.js}"></script>
+
+</body>
+</html>
