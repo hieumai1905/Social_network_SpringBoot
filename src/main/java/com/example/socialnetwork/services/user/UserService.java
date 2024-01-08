@@ -2,13 +2,17 @@ package com.example.socialnetwork.services.user;
 
 import com.example.socialnetwork.DTOs.UserLoginDTO;
 import com.example.socialnetwork.DTOs.UserRegisterDTO;
+import com.example.socialnetwork.models.CustomUserDetails;
 import com.example.socialnetwork.models.User;
 import com.example.socialnetwork.repositories.IUserRepository;
 import com.example.socialnetwork.utils.ConvertUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -79,5 +83,23 @@ public class UserService implements IUserService {
     @Override
     public List<User> findAllByNameInFriends(String name, String userId) {
         return userRepository.findAllByNameContainingInFriends(name, userId);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Optional<User> user = Optional.ofNullable(userRepository.findByEmail(email));
+        if (user.isPresent()) {
+            return new CustomUserDetails(user.get());
+        }
+        return null;
+    }
+
+    @Transactional
+    public UserDetails loadUserById(String userId) {
+        User user = userRepository.findById(userId).orElseThrow(
+                () -> new UsernameNotFoundException("User not found with id : " + userId)
+        );
+
+        return new CustomUserDetails(user);
     }
 }
