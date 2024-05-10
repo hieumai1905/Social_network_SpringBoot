@@ -14,7 +14,7 @@ public interface IPostRepository extends JpaRepository<Post, String> {
     @Query(value = "SELECT p.* " +
             "FROM posts p " +
             "WHERE ( " +
-            "        (p.user_id = :userId " +
+            "        (p.user_id = :userId AND p.access IN ('PUBLIC', 'FRIEND')" +
             "            OR (p.user_id IN (SELECT r.user_target_id " +
             "                              FROM relations r " +
             "                              WHERE r.user_id = :userId " +

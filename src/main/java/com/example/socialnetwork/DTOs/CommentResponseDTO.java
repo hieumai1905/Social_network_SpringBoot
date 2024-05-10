@@ -14,6 +14,6 @@ public class CommentResponseDTO {
     private String content;
     private String commentAt;
     private String userId;
-//    private String PostId;
+    private String PostId;
     private List<CommentReplyResponseDTO> commentReplies;
 }

@@ -2,7 +2,6 @@ package com.example.socialnetwork.services.user;
 
 import com.example.socialnetwork.DTOs.UserLoginDTO;
 import com.example.socialnetwork.DTOs.UserRegisterDTO;
-import com.example.socialnetwork.models.Post;
 import com.example.socialnetwork.models.User;
 import com.example.socialnetwork.services.IGeneralService;
 
@@ -25,4 +24,5 @@ public interface IUserService extends IGeneralService<User, String> {
     List<User> findAllByName(String name);
 
     List<User> findAllByNameInFriends(String name, String userId);
+
 }

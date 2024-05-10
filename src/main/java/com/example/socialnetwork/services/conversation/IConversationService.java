@@ -11,4 +11,8 @@ public interface IConversationService extends IGeneralService<Conversation, Long
     List<Conversation> getConversationJoinedByUserId(String userId, ParticipantStatus status);
 
     Optional<Conversation> findById(Long key);
+
+    Conversation getByUserIdAndUserTargetIdAndTypePersonal(String userId, String userTargetId);
+
+    Optional<Conversation> findConversationsByUserIds(List<String> userIds);
 }

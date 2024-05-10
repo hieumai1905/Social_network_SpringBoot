@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -22,4 +23,6 @@ public class ConversationResponseDTO {
     private String avatar;
 
     private String userId;
+    private String userCurrentId;
+    private List<ParticipantResponseDTO> participants;
 }

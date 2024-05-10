@@ -33,7 +33,7 @@ public class Conversation {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
-    @Column(name = "avatar", nullable = false, length = 100)
+    @Column(name = "avatar", length = 100)
     private String avatar;
 
     @ManyToOne
@@ -49,6 +49,6 @@ public class Conversation {
     @PrePersist
     protected void onCreate() {
         this.createdAt = new Date();
-        this.avatar = "/images/default-avatar.png";
+        this.avatar = null;
     }
 }

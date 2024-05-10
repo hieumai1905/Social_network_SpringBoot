@@ -12,5 +12,5 @@ public class ChatMessage {
     private MessageType type;
     private String content;
     private String senderId;
-    private Long conversationId;
+    private String conversationId;
 }

@@ -41,7 +41,7 @@ public class ProfileController {
             return new ModelAndView("errors/404");
         }
         ModelAndView modelAndView = new ModelAndView("profile");
-        UserResponseDTO userResponseDTO = ConvertUtils.convert(userCurrent.get(), UserResponseDTO.class);
+//        UserResponseDTO userResponseDTO = ConvertUtils.convert(userCurrent.get(), UserResponseDTO.class);
 
         List<Post> postOfUser = postService.findAllByUserId(userId);
         List<Media> medias = new ArrayList<>();
@@ -62,7 +62,7 @@ public class ProfileController {
         List<User> users = this.userService.findAllByRelationTypeOfUser("FRIEND", userId);
         modelAndView.addObject("number_of_friends", users.size());
         modelAndView.addObject("author", true);
-        modelAndView.addObject("user_info", userResponseDTO);
+        modelAndView.addObject("user_info", userCurrent.get());
         modelAndView.addObject("medias", medias);
         modelAndView.addObject("posts", postOfUser);
         return modelAndView;

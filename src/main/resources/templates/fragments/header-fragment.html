@@ -13,10 +13,10 @@
         </a>
     </div>
 
-    <form action="#" class="float-left header-search">
+    <form action="/search" method="get" class="float-left header-search">
         <div class="form-group mb-0 icon-input">
             <i class="feather-search font-sm text-grey-400"></i>
-            <input type="text" placeholder="Start typing to search.."
+            <input type="text" placeholder="Start typing to search.." name="q"
                    class="bg-grey border-0 lh-32 pt-2 pb-2 ps-5 pe-3 font-xssss fw-500 rounded-xl w350 theme-dark-bg"/>
         </div>
     </form>
@@ -271,7 +271,7 @@
     </div>
 
     <a th:href="@{/}" class="p-0 ms-3 menu-icon">
-        <img th:src="@{/images/profile-4.png}" alt="user" class="w40 mt--1"/></a>
+        <img th:src="@{/assets/images/profile-4.png}" alt="user" class="w40 mt--1"/></a>
 </div>
 </body>
 </html>

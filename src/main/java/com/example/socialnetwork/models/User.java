@@ -112,10 +112,10 @@ public class User {
 
     @PrePersist
     public void prePersist() {
-        this.avatar = "/files-upload/images/default-avatar.png";
-        this.coverPhoto = "/files-upload/images/default-cover-photo.jpg";
+        this.avatar = "/assets/files-upload/images/default-avatar.png";
+        this.coverPhoto = "/assets/files-upload/images/default-cover-photo.jpg";
         this.registerAt = new Date();
-        this.userRole = RoleUser.USER;
+        this.userRole = RoleUser.ROLE_USER;
         this.status = UserStatus.INACTIVE;
     }
 }

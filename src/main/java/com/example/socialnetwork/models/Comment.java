@@ -47,6 +47,11 @@ public class Comment {
 
     @PrePersist
     public void onCreate() {
-        commentAt = new Date();
+        this.commentAt = new Date();
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        this.commentAt = new Date();
     }
 }

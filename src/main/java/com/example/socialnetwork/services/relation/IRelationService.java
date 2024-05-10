@@ -16,4 +16,10 @@ public interface IRelationService extends IGeneralService<Relation, Long> {
     Optional<Relation> findByUserIdAndUserTargetIdAndType(String userId, String userTargetId, RelationType type);
 
     void removeAllOfUserAndUserTarget(String userId, String userTargetId);
+
+    List<Relation> findByUserTargetIdAndType(String userId, RelationType type);
+
+    List<Relation> findByUserIdAndType(String userId, RelationType type);
+
+    Long countMutualFriends(String userId1, String userId2);
 }

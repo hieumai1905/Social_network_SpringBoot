@@ -11,7 +11,5 @@ import java.util.List;
 @NoArgsConstructor
 public class ConversationRequestDTO {
     private String name;
-
     private List<String> participantIds;
-
 }

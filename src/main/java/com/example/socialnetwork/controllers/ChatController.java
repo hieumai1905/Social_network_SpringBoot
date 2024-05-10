@@ -17,14 +17,14 @@ public class ChatController {
 
     @MessageMapping("/chat.sendMessage/{conversationId}")
     @SendTo("/conversation/{conversationId}")
-    public ChatMessage sendMessage(@Payload ChatMessage chatMessage, @DestinationVariable("conversationId") Long conversationId) {
+    public ChatMessage sendMessage(@Payload ChatMessage chatMessage, @DestinationVariable("conversationId") String conversationId) {
         chatMessage.setConversationId(conversationId);
         return chatMessage;
     }
 
     @MessageMapping("/chat.addUser/{conversationId}")
     @SendTo("/conversation/{conversationId}")
-    public void addUser(@Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor, @DestinationVariable("conversationId") Long conversationId) {
+    public void addUser(@Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor, @DestinationVariable("conversationId") String conversationId) {
         log.info("UserId: {} JOINED ConversationId: {}", chatMessage.getSenderId(), conversationId);
         headerAccessor.getSessionAttributes().put("senderId", chatMessage.getSenderId());
         headerAccessor.getSessionAttributes().put("conversationId", conversationId);

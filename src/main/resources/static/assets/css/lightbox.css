@@ -79,7 +79,7 @@ body.right-comment-none .right-comment {display: none;}
   width: 32px;
   height: 32px;
   margin: 0 auto;
-  background: url(../images/loading.gif) no-repeat;
+  background: url(files-upload/images/loading.gif) no-repeat;
 }
 
 .lb-nav {
@@ -110,7 +110,7 @@ body.right-comment-none .right-comment {display: none;}
   width: 34%;
   left: 0;
   float: left;
-  background: url(../images/prev.png) left 48% no-repeat;
+  background: url(files-upload/images/prev.png) left 48% no-repeat;
   /*filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);*/
   opacity: 0;
   -webkit-transition: opacity 0.6s;
@@ -128,7 +128,7 @@ body.right-comment-none .right-comment {display: none;}
   width: 64%;
   right: 0;
   float: right;
-  background: url(../images/next.png) right 48% no-repeat;
+  background: url(files-upload/images/next.png) right 48% no-repeat;
   /*filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);*/
   opacity: 0;
   -webkit-transition: opacity 0.6s;
@@ -192,7 +192,7 @@ body.right-comment-none .right-comment {display: none;}
   float: right;
   width: 20px;
   height: 20px;
-  background: url(../images/close.png) top right no-repeat;
+  background: url(files-upload/images/close.png) top right no-repeat;
   text-align: right;
   background-size: contain;
   outline: none;

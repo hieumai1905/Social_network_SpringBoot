@@ -18,6 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/messages")
+@CrossOrigin("*")
 public class ApiMessageController {
     @Autowired
     private IConversationService conversationService;

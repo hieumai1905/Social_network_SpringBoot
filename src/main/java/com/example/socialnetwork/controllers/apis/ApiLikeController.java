@@ -19,6 +19,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api/likes")
+@CrossOrigin(origins = "*")
 public class ApiLikeController {
 
     @Autowired

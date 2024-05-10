@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/relations")
+@CrossOrigin("*")
 public class ApiRelationController {
 
     @Autowired
@@ -50,17 +51,17 @@ public class ApiRelationController {
         if (userTarget.isEmpty()) {
             return ResponseEntity.badRequest().body("User not found");
         }
-        boolean isFriend = relationService.findByUserIdAndUserTargetIdAndType("60d5a805-81a1-43fa-a2cd-d86a615e933a", userTargetId, RelationType.FRIEND).isPresent();
+        boolean isFriend = relationService.findByUserIdAndUserTargetIdAndType("50d5a805-81a1-43fa-a2cd-d86a615e933a", userTargetId, RelationType.FRIEND).isPresent();
         if (isFriend) {
-            relationService.removeAllOfUserAndUserTarget("60d5a805-81a1-43fa-a2cd-d86a615e933a", userTargetId);
+            relationService.removeAllOfUserAndUserTarget("50d5a805-81a1-43fa-a2cd-d86a615e933a", userTargetId);
             return ResponseEntity.ok("remove friend success");
         }
-        List<Relation> relationExits = relationService.findByUserIdAndOtherTargetId(userTargetId, "60d5a805-81a1-43fa-a2cd-d86a615e933a");
+        List<Relation> relationExits = relationService.findByUserIdAndOtherTargetId(userTargetId, "50d5a805-81a1-43fa-a2cd-d86a615e933a");
         if (relationExits.size() == 0) {
             return ResponseEntity.badRequest().body("Request not found");
         }
-        relationService.removeAllByUserIdAndUserTargetId(userTargetId, "60d5a805-81a1-43fa-a2cd-d86a615e933a");
-        Optional<User> userCurrent = this.userService.findById("60d5a805-81a1-43fa-a2cd-d86a615e933a");
+        relationService.removeAllByUserIdAndUserTargetId(userTargetId, "50d5a805-81a1-43fa-a2cd-d86a615e933a");
+        Optional<User> userCurrent = this.userService.findById("50d5a805-81a1-43fa-a2cd-d86a615e933a");
         Relation relationFriendUserCurrent = new Relation(RelationType.FRIEND, userCurrent.get(), userTarget.get());
         relationService.save(relationFriendUserCurrent);
         Relation relationFriendUserTarget = new Relation(RelationType.FRIEND, userTarget.get(), userCurrent.get());

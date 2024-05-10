@@ -38,4 +38,14 @@ public class ConversationService implements IConversationService {
     public Optional<Conversation> findById(Long key) {
         return conversationRepository.findById(key);
     }
+
+    @Override
+    public Conversation getByUserIdAndUserTargetIdAndTypePersonal(String userId, String userTargetId) {
+        return conversationRepository.findByUserIdAndUserTargetIdAndTypePersonal(userId, userTargetId);
+    }
+
+    @Override
+    public Optional<Conversation> findConversationsByUserIds(List<String> userIds) {
+        return Optional.ofNullable(conversationRepository.findConversationsByUserIds(userIds));
+    }
 }

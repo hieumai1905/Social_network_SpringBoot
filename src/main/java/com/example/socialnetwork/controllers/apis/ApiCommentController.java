@@ -16,11 +16,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/comments")
+@CrossOrigin("*")
 public class ApiCommentController {
     @Autowired
     private IPostService postService;
@@ -43,7 +45,8 @@ public class ApiCommentController {
 
     @PostMapping("/posts")
     public ResponseEntity<?> createComment(@RequestBody CommentRequestDTO commentRequestDTO) {
-        Comment newComment = ConvertUtils.convert(commentRequestDTO, Comment.class);
+        Comment newComment = new Comment();
+        newComment.setContent(commentRequestDTO.getContent());
         Optional<Post> post = postService.findById(commentRequestDTO.getPostId());
         if (post.isEmpty()) {
             return ResponseEntity.badRequest().build();
@@ -83,9 +86,8 @@ public class ApiCommentController {
         if (comment.isEmpty()) {
             return ResponseEntity.badRequest().build();
         }
-        Comment newComment = ConvertUtils.convert(commentRequestDTO, Comment.class);
-        newComment.setCommentId(commentId);
-        Optional<Comment> commentUpdated = commentService.save(newComment);
+        comment.get().setContent(commentRequestDTO.getContent());
+        Optional<Comment> commentUpdated = commentService.save(comment.get());
         if (commentUpdated.isEmpty()) {
             return ResponseEntity.badRequest().build();
         }

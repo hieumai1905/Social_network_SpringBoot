@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "relations")
@@ -24,6 +25,10 @@ public class Relation {
     @Enumerated(EnumType.STRING)
     private RelationType type;
 
+    @Column(name = "set_at", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date setAt;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -36,5 +41,15 @@ public class Relation {
         this.type = type;
         this.user = user;
         this.userTarget = userTarget;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        this.setAt = new Date();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        this.setAt = new Date();
     }
 }

@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = {"/api/notifications"})
+@CrossOrigin("*")
 public class ApiNotificationController {
     @Autowired
     private INotificationService notificationService;

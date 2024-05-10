@@ -50,4 +50,19 @@ public class RelationService implements IRelationService {
         removeAllByUserIdAndUserTargetId(userId, userTargetId);
         removeAllByUserIdAndUserTargetId(userTargetId, userId);
     }
+
+    @Override
+    public List<Relation> findByUserTargetIdAndType(String userId, RelationType type) {
+        return relationRepository.findAllByUserTarget_UserIdAndTypeOrderBySetAtDesc(userId, type);
+    }
+
+    @Override
+    public List<Relation> findByUserIdAndType(String userId, RelationType type) {
+        return relationRepository.findAllByUser_UserIdAndTypeOrderBySetAtDesc(userId, type);
+    }
+
+    @Override
+    public Long countMutualFriends(String userId1, String userId2) {
+        return relationRepository.countMutualFriends(userId1, userId2);
+    }
 }

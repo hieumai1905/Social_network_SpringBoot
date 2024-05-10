@@ -27,7 +27,7 @@
     background-color: #fff;
     background-position: center center;
     background-repeat: no-repeat;
-    background-image: url(../images/preloader.svg);
+    background-image: url(files-upload/images/preloader.svg);
     background-size: 80px
 }
 
@@ -402,7 +402,7 @@
     z-index: 1;
     width: 120%;
     height: 100%;
-    background-image: url(../images/layer-pattenr-bg.png);
+    background-image: url(files-upload/images/layer-pattenr-bg.png);
     background-repeat: repeat-y;
     background-size: contain
 }
@@ -434,7 +434,7 @@
     top: 60%;
     right: 0;
     display: inline-block;
-    background-image: url(../images/shape-3.png);
+    background-image: url(files-upload/images/shape-3.png);
     background-size: contain;
     background-repeat: no-repeat
 }
@@ -15498,7 +15498,7 @@ body:not(.theme-full) .main-content .middle-sidebar-bottom.header-padding {
 }
 
 .subscribe-widget:after {
-    background-image: url(../images/paper-plane.html);
+    background-image: url(files-upload/images/paper-plane.html);
     background-size: 200px;
     position: absolute;
     top: 10px;
@@ -15990,7 +15990,7 @@ select.sort {
     z-index: 1;
     margin-left: -15px;
     margin-top: -15px;
-    background-image: url(../images/play.png);
+    background-image: url(files-upload/images/play.png);
     background-size: contain;
     display: block;
     width: 30px;
@@ -16026,7 +16026,7 @@ select.sort {
     z-index: 1;
     margin-left: -30px;
     margin-top: -30px;
-    background-image: url(../images/icon-play.png);
+    background-image: url(files-upload/images/icon-play.png);
     background-size: contain;
     display: block;
     width: 60px;
@@ -16114,7 +16114,7 @@ select.sort {
 }
 
 .arrow-right:after {
-    background-image: url(../images/arrow.html);
+    background-image: url(files-upload/images/arrow.html);
     width: 50px;
     right: -30px;
     z-index: 2;
